@@ -3,167 +3,52 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>Swiper demo</title>
+	<title>Material You Slider Clone</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-	<!-- Demo styles -->
-	<style>
-		*{
-			box-sizing: border-box;
-			margin: 0;
-			padding: 0;
-		}
-		.container{
-			max-width: 1200px;
-			margin-inline: auto;
-			padding-block: 6rem;
-		}
-
-		.swiper{
-			position: relative;
-			--spaceBetween: 15px;
-		}
-	
-		.swiper-wrapper{
-			display: flex;
-			overflow: hidden;
-		}
-
-		.swiper-slide{
-			flex-shrink: 0;
-			flex-basis: 0;
-			width: 0px !important;
-			/* transition: flex-basis 0.6s cubic-bezier(0.85, 0, 0.15, 1); */
-			transition: flex-basis 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-		}
-
-		.swiper-slide.swiper-slide-prev,
-		.swiper-slide.swiper-slide-next
-		{
-			flex-basis: calc(25% - var(--spaceBetween));
-		}
-		
-		.swiper-slide.swiper-slide-active{
-			flex-basis: 50%;
-			margin-inline: calc(var(--spaceBetween));
-		}
-
-		.arrow{
-			position: absolute;
-			z-index: 2;
-			top: 0;
-			width: 25%;
-			height: 100%;
-			background-color: transparent;
-			cursor: pointer;
-		}
-
-		.arrow--next{
-			right: 0;
-		}
-		
-		.inner-slide{
-			height: 400px;
-			background-color: #f1f1f1;
-			border-radius: 1rem;
-			overflow: hidden;
-		}
-		.inner-slide img{
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
-	</style>
+	<link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
 <body>
-	<!-- Swiper -->
 	<div class="container">
-		<div class="swiper tinyflow-slider">
+		<div class="swiper tinyflow-slider" data-autoplay-delay="2000" data-dynamic-autoplay-delay="true">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
-					<div class="inner-slide">
-						<img src="https://images.unsplash.com/photo-1566026704123-16445bc4a86a?q=80&w=600&auto=format&fit=crop" alt="model" />
+					<div class="card">
+						<video loop muted playsinline preload="metadata" poster="https://images.unsplash.com/photo-1566026704123-16445bc4a86a?q=80&w=600&auto=format&fit=crop" data-slide-media="video">
+							<source src="./assets/videos/video-1.mp4" />
+						</video>
 					</div>
 				</div>
 				<div class="swiper-slide">
-					<div class="inner-slide">
-						<img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?q=80&w=600&auto=format&fit=crop" alt="model" />
+					<div class="card">
+						<video loop muted playsinline preload="metadata" poster="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?q=80&w=600&auto=format&fit=crop" data-slide-media="video">
+							<source src="./assets/videos/video-2.mp4" />
+						</video>
 					</div>
 				</div>
 				<div class="swiper-slide">
-					<div class="inner-slide">
-						<img src="https://images.unsplash.com/photo-1618828450820-ff5f3da9611a?q=80&w=600&auto=format&fit=crop" alt="model" />
+					<div class="card">
+						<video loop muted playsinline preload="metadata" poster="https://images.unsplash.com/photo-1618828450820-ff5f3da9611a?q=80&w=600&auto=format&fit=crop" data-slide-media="video">
+							<source src="./assets/videos/video-3.mp4" />
+						</video>
 					</div>
 				</div>
 				<div class="swiper-slide">
-					<div class="inner-slide">
-						<img src="https://images.unsplash.com/photo-1623274398123-fbc7fd43c0c9?q=80&w=600&auto=format&fit=crop" alt="model" />
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="inner-slide">
-						<img src="https://images.unsplash.com/photo-1572708609354-e4b4bdfe5a93?q=80&w=600&auto=format&fit=crop" alt="model" />
+					<div class="card">
+						<img src="https://images.unsplash.com/photo-1623274398123-fbc7fd43c0c9?q=80&w=600&auto=format&fit=crop" alt="model" data-slide-media="image" />
 					</div>
 				</div>
 			</div>
 			<!-- Add Pagination -->
-			<div class="swiper-pagination"></div>
+			<div class="tinyflow-slider__pagination"></div>
 			<!-- Add Navigation -->
 			<div class="arrow arrow--prev"></div>
 			<div class="arrow arrow--next"></div>
 		</div>
-		<div>
-			<button type="button" data-slide-index="0">1</button>
-			<button type="button" data-slide-index="1">2</button>
-			<button type="button" data-slide-index="2">3</button>
-			<button type="button" data-slide-index="3">4</button>
-			<button type="button" data-slide-index="4">5</button>
-		</div>
 	</div>
 
-	<!-- Swiper JS -->
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-	<script>
-		// Init Swiper
-		const tinyflowSlider = new Swiper('.tinyflow-slider', {
-			slidesPerView: 2,
-			loop: true,
-			centeredSlides: true,
-			virtualTranslate: true,
-			loopPreventsSliding: false,
-			autoplay: {
-				delay: 5000,
-				disableOnInteraction: false,
-				waitForTransition: false,
-			},
-			keyboard: {
-				enabled: true,
-				onlyInViewport: false,
-			},
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-			navigation: {
-				nextEl: '.arrow--next',
-				prevEl: '.arrow--prev',
-			},
-		});
-
-		document.querySelectorAll('[data-slide-index]').forEach((button)=>{
-			button.addEventListener('click', function(){
-				console.log(this.dataset.slideIndex);
-				tinyflowSlider.slideTo(this.dataset.slideIndex)
-			})
-		})
-
-		// tinyflowSlider.on('slideChangeTransitionStart', function() {
-		// 	setTimeout(function() {
-		// 		tinyflowSlider.animating = false;
-		// 	}, 0);
-		// });
-	</script>
+	<script src="./assets/js/script.js"></script>
 </body>
 </html>
